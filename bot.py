@@ -1,9 +1,7 @@
-())
 import os
 import asyncio
 from pyrogram import Client, filters
 
-# Environment variables se credentials uthana
 API_ID = int(os.environ.get("API_ID", "123456"))
 API_HASH = os.environ.get("API_HASH", "")
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
@@ -28,7 +26,6 @@ async def main():
     await bot.stop()
 
 if __name__ == "__main__":
-    # Python 3.14+ ke liye naya loop handler setup
     try:
         loop = asyncio.get_running_loop()
     except RuntimeError:
@@ -36,3 +33,4 @@ if __name__ == "__main__":
         asyncio.set_event_loop(loop)
     
     loop.run_until_complete(main())
+
