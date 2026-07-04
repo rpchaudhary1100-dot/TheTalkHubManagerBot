@@ -15,22 +15,17 @@ bot = Client(
 
 @bot.on_message(filters.command("start"))
 async def start_command(client, message):
-    await message.reply_text(f"Hello {message.from_user.mention}! Main live hoon aur perfectly kaam kar raha hoon. 🚀")
+    await message.reply_text(f"Hello {message.from_user.mention}! Main live hoon. 🚀")
 
 async def main():
-    print("Bot chalu ho raha hai...")
+    print("Bot start ho raha hai...")
     await bot.start()
-    print("Bot live hai!")
-    from pyrogram.methods.utilities.idle import idle
-    await idle()
-    await bot.stop()
+    print("Bot successfully live ho gaya!")
+    # Keep running
+    while True:
+        await asyncio.sleep(3600)
 
 if __name__ == "__main__":
-    try:
-        loop = asyncio.get_running_loop()
-    except RuntimeError:
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-    
-    loop.run_until_complete(main())
+    asyncio.run(main())
+
 
