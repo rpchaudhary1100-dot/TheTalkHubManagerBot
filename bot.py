@@ -1,4 +1,5 @@
 import os
+import asyncio
 from pyrogram import Client, filters
 
 API_ID = int(os.environ.get("API_ID", "123456"))
@@ -16,5 +17,12 @@ bot = Client(
 async def start_command(client, message):
     await message.reply_text(f"Hello {message.from_user.mention}! Main live hoon aur sahi se kaam kar raha hoon. 🚀")
 
-print("Bot start ho raha hai...")
-bot.run()
+async def main():
+    print("Bot start ho raha hai...")
+    await bot.start()
+    from pyrogram.methods.utilities.idle import idle
+    await idle()
+    await bot.stop()
+
+if __name__ == "__main__":
+    asyncio.run(main())
