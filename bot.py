@@ -1,6 +1,6 @@
 import os
 import asyncio
-from pyrogram import Client, filters
+from hydrogram import Client, filters
 
 API_ID = int(os.environ.get("API_ID", "123456"))
 API_HASH = os.environ.get("API_HASH", "")
@@ -15,13 +15,13 @@ bot = Client(
 
 @bot.on_message(filters.command("start"))
 async def start_command(client, message):
-    await message.reply_text(f"Hello {message.from_user.mention}! Main live hoon. 🚀")
+    await message.reply_text(f"Hello {message.from_user.mention}! Main successfully live ho gaya hoon! 🚀")
 
 async def main():
     print("Bot start ho raha hai...")
     await bot.start()
-    print("Bot successfully live ho gaya!")
-    # Keep running
+    print("Bot completely live hai!")
+    # Keep bot running smoothly
     while True:
         await asyncio.sleep(3600)
 
